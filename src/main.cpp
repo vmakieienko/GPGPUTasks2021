@@ -89,9 +89,11 @@ int main() {
     const std::vector<cl_device_id> deviceIds = findDevices();
     std::cout << "Devices count: " << deviceIds.size() << "!" << std::endl;
 
+/*
     for (const auto &deviceId: deviceIds) {
         lab00::printDeviceInfo(deviceId);
     }
+*/
 
     // TODO 2 Создайте контекст с выбранным устройством
     // См. документацию https://www.khronos.org/registry/OpenCL/sdk/1.2/docs/man/xhtml/ -> OpenCL Runtime -> Contexts -> clCreateContext
@@ -107,7 +109,7 @@ int main() {
 
     cl_command_queue pCommandQueue = createCommandQueue(pContext, deviceIds);
 
-    unsigned int n = 1000 * 1000;// * 500; // todo  * 1000
+    unsigned int n = 1000 * 1000 * 500; // todo  * 1000
     // Создаем два массива псевдослучайных данных для сложения и массив для будущего хранения результата
     std::vector<float> as(n, 0);
     std::vector<float> bs(n, 0);
