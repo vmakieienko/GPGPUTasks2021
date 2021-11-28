@@ -293,7 +293,7 @@ std::vector<unsigned char> getBuildLog(cl_program pProgram, const std::vector<cl
 cl_program createProgram(cl_context pContext, std::string basicString) {
     cl_int err = 0;
     const char *tmpPString = basicString.c_str();
-    unsigned long long int tmpStringSize = basicString.size();
+    const auto tmpStringSize = (const size_t) basicString.size();
     cl_program pProgram = clCreateProgramWithSource(pContext, 1, &tmpPString, &tmpStringSize, &err);
     OCL_SAFE_CALL(err);
     return pProgram;
