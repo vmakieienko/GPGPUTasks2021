@@ -109,7 +109,7 @@ int main() {
 
     cl_command_queue pCommandQueue = createCommandQueue(pContext, deviceIds);
 
-    unsigned int n = 1000 * 1000 * 500; // todo  * 1000
+    unsigned int n = 1000 * 1000;
     // Создаем два массива псевдослучайных данных для сложения и массив для будущего хранения результата
     std::vector<float> as(n, 0);
     std::vector<float> bs(n, 0);
