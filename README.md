@@ -4,7 +4,7 @@
 
 # Задание 1. A+B.
 
-[![Build Status](https://app.travis-ci.com/GPGPUCourse/GPGPUTasks2021.svg?branch=task01)](https://app.travis-ci.com/GPGPUCourse/GPGPUTasks2021)
+[![Build Status](https://github.com/GPGPUCourse/GPGPUTasks2021/actions/workflows/cmake.yml/badge.svg?branch=task01&event=push)](https://github.com/GPGPUCourse/GPGPUTasks2021/actions/workflows/cmake.yml)
 
 Задание
 =======
