@@ -177,10 +177,10 @@ int main() {
     // TODO 10 Выставите все аргументы в кернеле через clSetKernelArg (as_gpu, bs_gpu, cs_gpu и число значений, убедитесь, что тип количества элементов такой же в кернеле)
     {
         unsigned int i = 0;
-        clSetKernelArg(kernel, i++, sizeof(cl_mem), &as_gpu);
-        clSetKernelArg(kernel, i++, sizeof(cl_mem), &bs_gpu);
-        clSetKernelArg(kernel, i++, sizeof(cl_mem), &cs_gpu);
-        clSetKernelArg(kernel, i++, sizeof (unsigned int), &n);
+        OCL_SAFE_CALL(clSetKernelArg(kernel, i++, sizeof(cl_mem), &as_gpu));
+        OCL_SAFE_CALL(clSetKernelArg(kernel, i++, sizeof(cl_mem), &bs_gpu));
+        OCL_SAFE_CALL(clSetKernelArg(kernel, i++, sizeof(cl_mem), &cs_gpu));
+        OCL_SAFE_CALL(clSetKernelArg(kernel, i++, sizeof (unsigned int), &n));
         // clSetKernelArg(kernel, i++, ..., ...);
         // clSetKernelArg(kernel, i++, ..., ...);
         // clSetKernelArg(kernel, i++, ..., ...);
@@ -209,6 +209,7 @@ int main() {
             OCL_SAFE_CALL(clEnqueueNDRangeKernel(pCommandQueue, kernel, 1, nullptr, &global_work_size, nullptr, 0, nullptr, &event));
             // clWaitForEvents...
             OCL_SAFE_CALL(clWaitForEvents(1, &event));
+            OCL_SAFE_CALL(clReleaseEvent(event));
             t.nextLap(); // При вызове nextLap секундомер запоминает текущий замер (текущий круг) и начинает замерять время следующего круга
         }
         double elapsed = t1.elapsed();
@@ -263,6 +264,8 @@ int main() {
         }
     }
 
+    OCL_SAFE_CALL(clReleaseKernel(kernel));
+    OCL_SAFE_CALL(clReleaseProgram(program));
     OCL_SAFE_CALL(clReleaseMemObject(as_gpu));
     OCL_SAFE_CALL(clReleaseMemObject(bs_gpu));
     OCL_SAFE_CALL(clReleaseMemObject(cs_gpu));
