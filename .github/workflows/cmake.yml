@@ -30,4 +30,4 @@ jobs:
 
     - name: aplusb
       working-directory: ${{github.workspace}}
-      run: ./aplusb
+      run: ./build/aplusb
