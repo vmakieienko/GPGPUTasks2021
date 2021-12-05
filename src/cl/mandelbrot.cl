@@ -1,4 +1,4 @@
-#ifdef __CLION_IDE__
+#if defined(__CLION_IDE__) || defined(__CLION_IDE_)
 #include <libgpu/opencl/cl/clion_defines.cl>
 #endif
 
